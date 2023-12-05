@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loja de Café</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Loja de Café</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link"  href="#" data-toggle="modal" data-target="#carrinhoModal">
+              <i class="fa fa-shopping-cart"></i> Carrinho
+            </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Início</a>
+        </li>
+        <% if (user) { %>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><%= user.nome %></a>
+            </li>
+          <% } else { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+        <% } %>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <% if (user) { %>
+            <h1>Bem-vindo à Loja de Café <%= user.nome %></h1>
+          <% } else { %>
+                <h1>Bem-vindo à Loja de Café</h1>            
+                <p>Faça <a href="/login">login</a> ou <a href="/register">registre-se</a> para acessar nossa loja!</p>
+        <% } %>
+      </div>
+    </div>
+    <div class="modal fade" id="carrinhoModal" tabindex="-1" aria-labelledby="carrinhoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="carrinhoModalLabel">Carrinho de Compras</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div id="carrinhoItens">
+                    <!-- Itens do carrinho serão inseridos aqui via JavaScript -->
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Continuar Comprando</button>
+              <a href="/finalizar-pedido" class="btn btn-primary">Finalizar Pedido</a>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <% products.forEach(product => { %>
+            <div class="col-md-4">
+              <div class="card">
+                <% if (product.imagem) { %>
+                  <img src="<%= product.imagem.replace('public/', '') %>" class="card-img-top" alt="<%= product.name %>">
+                <% } else { %>
+                  <img src="/imagens/imagem.png" class="card-img-top" alt="Imagem padrão">
+                <% } %>
+                <div class="card-body">
+                  <h5 class="card-title"><%= product.name %></h5>
+                  <p class="card-text">R$ <%= product.price %></p>
+                  <button class="btn btn-primary" onclick="adicionarAoCarrinho(idDoProduto)" >Adicionar ao Carrinho </button> <!-- Botão Adicionar ao Carrinho -->                </div>
+                </div>
+            </div>
+          <% }); %>
+          
+      </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.9/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
