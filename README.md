@@ -15,3 +15,8 @@
 #### mariadb
 * Sistema Gerenciador de Banco de Dados Relacional
 * Utilizado para criar a tabela com as seguintes colunas:
+
+## Video de Apresentação 1
+https://youtu.be/KNLbzjDrXUM
+## Video de Apresentação 2
+https://youtu.be/Ii06LRxDa38
