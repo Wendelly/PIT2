@@ -14,7 +14,8 @@
 #### Node.js
 #### mariadb
 * Sistema Gerenciador de Banco de Dados Relacional
-* Utilizado para criar a tabela com as seguintes colunas:
+* Utilizado para criar a tabela de order, produto e de usuario, utilizando a interface.
+* Foi salvo o arquivo dump da base
 
 ## Video de Apresentação 1
 https://youtu.be/KNLbzjDrXUM
