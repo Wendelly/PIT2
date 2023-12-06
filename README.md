@@ -9,6 +9,7 @@
 ## Descrição das Tecnologias
 ### Front-end
 #### EJS
+ * HTML para criação dos templetes, salvos em EJS, para criar uma forma mais maleavel
 ### Back-end
 #### Node.js
 #### mariadb
